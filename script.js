@@ -50,8 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function actualizarBarraProgreso() {
     const total = botones.length;
     const aprobados = document.querySelectorAll(".ramo.aprobado").length;
-    const porcentaje = (aprobados / total) * 100;
-    document.getElementById("barra-progreso").style.width = `${porcentaje}%`;
+    const porcentaje = Math.round((aprobados / total) * 10);
+    const barra = document.getElementById("barra-progreso");
+    barra.style.width = `${porcentaje}%`;
+    document.getElementById("porcentaje-progreso").textContent = `${porcentaje}%`;
   }
 
   function desmarcarDependientes(ramoId) {
