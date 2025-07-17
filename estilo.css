@@ -16,20 +16,26 @@ h1 {
   margin: 0 auto; /* centro horizontal */
 }
 
-.fila-anios, .fila-semestres {
-  display: grid;
-  grid-template-columns: repeat(4, 280px);
-  justify-content: start;
-  gap: 30px;
-  margin-bottom: 10px;
-}
-
 .fila-anios {
+  display: grid;
+  grid-template-columns: repeat(2, 580px); /* 2 años = 2 columnas de 2 semestres */
+  gap: 30px;
+  justify-content: start;
+  margin-bottom: 10px;
   font-weight: bold;
   color: #33105D;
   font-size: 18px;
   text-align: center;
 }
+
+.fila-semestres {
+  display: grid;
+  grid-template-columns: repeat(4, 280px);
+  gap: 30px;
+  justify-content: start;
+  margin-bottom: 10px;
+}
+
 
 /* Distribuir impares arriba y pares abajo */
 .fila-semestres .semestre:nth-child(odd) {
