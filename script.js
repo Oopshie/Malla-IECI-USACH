@@ -1,75 +1,35 @@
-const ramos = {
-  calculo1: { nombre: "Cálculo I", prerequisitos: [], semestre: 1 },
-  algebra: { nombre: "Álgebra", prerequisitos: [], semestre: 1 },
-  fisica: { nombre: "Física", prerequisitos: ["calculo1"], semestre: 2 },
-  calculo2: { nombre: "Cálculo II", prerequisitos: ["calculo1"], semestre: 2 },
-  ecuaciones: { nombre: "Ecuaciones Diferenciales", prerequisitos: ["calculo2", "algebra"], semestre: 3 }
-};
+document.querySelectorAll('.ramo').forEach(boton => {
+  const id = boton.dataset.id;
+  const requisitos = boton.dataset.requisitos ? boton.dataset.requisitos.split(',') : [];
 
-let aprobados = new Set(JSON.parse(localStorage.getItem("aprobados") || "[]"));
-
-function iniciarMalla() {
-  for (const id in ramos) {
-    const div = document.getElementById(id);
-    div.addEventListener("click", () => aprobarRamo(id));
-
-    if (aprobados.has(id)) {
-      desactivarRamo(div);
-    } else if (ramos[id].prerequisitos.every(req => aprobados.has(req))) {
-      activarRamo(div);
-    }
+  // Estado inicial
+  const estadoGuardado = localStorage.getItem(id);
+  if (estadoGuardado === 'aprobado') {
+    boton.classList.add('aprobado');
+    boton.disabled = true;
   }
-  actualizarProgreso();
-}
 
-function activarRamo(div) {
-  div.classList.add("activo");
-  div.classList.remove("aprobado");
-  div.style.cursor = "pointer";
-}
+  // Desactivar si no cumple requisitos
+  const cumpleRequisitos = requisitos.every(req => localStorage.getItem(req) === 'aprobado');
+  if (!cumpleRequisitos) {
+    boton.disabled = true;
+  }
 
-function desactivarRamo(div) {
-  div.classList.remove("activo");
-  div.classList.add("aprobado");
-  div.style.cursor = "default";
-  div.style.opacity = "1";
-}
+  // Al hacer clic
+  boton.addEventListener('click', () => {
+    boton.classList.add('aprobado');
+    boton.disabled = true;
+    localStorage.setItem(id, 'aprobado');
 
-function aprobarRamo(id) {
-  const div = document.getElementById(id);
-  if (!div.classList.contains("activo")) return;
-
-  aprobados.add(id);
-  localStorage.setItem("aprobados", JSON.stringify(Array.from(aprobados)));
-  desactivarRamo(div);
-
-  for (const otroId in ramos) {
-    if (!aprobados.has(otroId)) {
-      const habilitado = ramos[otroId].prerequisitos.every(req => aprobados.has(req));
-      if (habilitado) {
-        activarRamo(document.getElementById(otroId));
+    // Reactivar otros botones que dependan de este
+    document.querySelectorAll('.ramo').forEach(otro => {
+      const otrosRequisitos = otro.dataset.requisitos ? otro.dataset.requisitos.split(',') : [];
+      if (otrosRequisitos.includes(id)) {
+        const todosCumplidos = otrosRequisitos.every(req => localStorage.getItem(req) === 'aprobado');
+        if (todosCumplidos && !otro.classList.contains('aprobado')) {
+          otro.disabled = false;
+        }
       }
-    }
-  }
-
-  actualizarProgreso();
-}
-
-function actualizarProgreso() {
-  const total = Object.keys(ramos).length;
-  const completados = aprobados.size;
-  const porcentaje = Math.round((completados / total) * 100);
-
-  const barra = document.getElementById("barra-progreso");
-  const texto = document.getElementById("porcentaje-texto");
-
-  barra.style.width = porcentaje + "%";
-  texto.textContent = `Progreso: ${porcentaje}%`;
-}
-
-function reiniciarMalla() {
-  localStorage.removeItem("aprobados");
-  location.reload();
-}
-
-iniciarMalla();
+    });
+  });
+});
