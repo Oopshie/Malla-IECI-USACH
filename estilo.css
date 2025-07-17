@@ -1,6 +1,8 @@
 body {
+  max-width: 1200px;
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 20px auto;
+  padding: 0 20px;
   background: #f7f7f7;
 }
 
@@ -9,13 +11,21 @@ h1 {
   margin-bottom: 20px;
 }
 
+.fila-semestres {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
 .semestre {
+  width: 280px;
   background-color: #ccccff; /* Periwinkle */
   border-left: 8px solid #f3e5f5; /* lila claro */
   padding: 15px;
-  margin: 15px 0;
   border-radius: 10px;
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
 }
 
 .semestre h2 {
