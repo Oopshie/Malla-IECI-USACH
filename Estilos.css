@@ -1,0 +1,93 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 20px;
+}
+
+.semestre {
+  margin-bottom: 40px;
+}
+
+.semestre h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.malla {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ramo {
+  padding: 20px;
+  width: 160px;
+  background-color: #ccc;
+  border-radius: 8px;
+  cursor: not-allowed;
+  user-select: none;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.ramo.activo {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.ramo.aprobado {
+  background-color: #2196f3;
+  color: white;
+  cursor: default;
+  opacity: 1;
+}
+
+.progreso-container {
+  width: 80%;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.barra-progreso {
+  height: 100%;
+  background-color: #4caf50;
+  width: 0%;
+  transition: width 0.4s ease-in-out;
+}
+
+#porcentaje-texto {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Responsive para celular */
+@media screen and (max-width: 600px) {
+  .malla {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ramo {
+    width: 80%;
+    font-size: 16px;
+  }
+
+  .semestre h2 {
+    font-size: 18px;
+  }
+
+  .progreso-container {
+    width: 90%;
+  }
+
+  #porcentaje-texto {
+    font-size: 16px;
+  }
+}
