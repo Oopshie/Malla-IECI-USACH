@@ -10,8 +10,8 @@ h1 {
 }
 
 .semestre {
-  background-color: #f3e5f5; /* lila claro */
-  border-left: 8px solid #ba68c8; /* lila más oscuro */
+  background-color: #ccccff; /* Periwinkle */
+  border-left: 8px solid #f3e5f5; /* lila claro */
   padding: 15px;
   margin: 15px 0;
   border-radius: 10px;
@@ -29,7 +29,7 @@ ul {
 
 button.ramo {
   background-color: #ffffff;
-  border: 2px solid #ba68c8;
+  border: 2px solid #f3e5f5;
   color: #333;
   padding: 10px;
   margin: 5px;
@@ -60,14 +60,19 @@ button.ramo:disabled {
   width: 100%;
   background-color: #ddd;
   height: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  border-radius: 5px;
+  margin-bottom: 5px;
   overflow: hidden;
 }
 
 #barra-progreso {
   height: 100%;
-  background-color: #ba68c8;
+  background-color: ##4caf50;
   width: 0%;
   transition: width 0.3s;
+}
+
+#porcentaje-progreso {
+  font-weight: bold;
+  margin-left: 10px;
 }
