@@ -11,12 +11,96 @@ h1 {
   margin-bottom: 20px;
 }
 
+.contenedor-malla {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* Cada grupo-anio será un bloque con año arriba y dos semestres en fila */
+.grupo-anio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px; /* ajusta si quieres */
+}
+
+.anio {
+  font-weight: bold;
+  color: #33105D;
+  font-size: 22px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Fila de los semestres (dos por año) */
+.fila-semestres {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Cada semestre es un cuadro */
+.semestre {
+  width: 140px; /* la mitad del ancho del grupo-anio menos gap */
+  background-color: #ccccff;
+  border-left: 8px solid #f3e5f5;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+}
+
+.semestre h2 {
+  margin-top: 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+button.ramo {
+  background-color: #ffffff;
+  border: 2px solid #f3e5f5;
+  color: #333;
+  padding: 6px 8px;
+  margin: 3px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  font-size: 12px;
+  transition: 0.3s;
+}
+
+button.ramo:hover {
+  background-color: #ede7f6;
+}
+
+button.ramo.aprobado {
+  background-color: #c8e6c9;
+  border-color: #388e3c;
+  color: #2e7d32;
+  text-decoration: line-through;
+}
+
+button.ramo:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Barra progreso, si la usas */
 #barra-progreso-container {
   width: 100%;
   background-color: #ccccff;
   height: 30px;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   overflow: hidden;
   position: relative;
 }
@@ -42,106 +126,26 @@ h1 {
   pointer-events: none;
 }
 
-.contenedor-malla {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  max-width: calc(280px * 4 + 30px * 3);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.grupo-anio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
-}
-
-.anio {
-  font-weight: bold;
-  color: #33105D;
-  margin-bottom: 12px;
-  font-size: 18px;
-  text-align: center;
-}
-
-.fila-semestres {
-  display: flex;
-  gap: 20px;
-  flex-wrap: nowrap;
-  justify-content: center;
-}
-
-.semestre {
-  width: 280px;
-  background-color: #ccccff; /* Periwinkle */
-  border-left: 8px solid #f3e5f5; /* lila claro */
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  text-align: left;
-}
-
-.semestre h2 {
-  margin-top: 0;
-}
-
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-button.ramo {
-  background-color: #fff;
-  border: 2px solid #f3e5f5;
-  color: #333;
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-  transition: 0.3s;
-}
-
-button.ramo:hover {
-  background-color: #ede7f6;
-}
-
-button.ramo.aprobado {
-  background-color: #c8e6c9;
-  border-color: #388e3c;
-  color: #2e7d32;
-  text-decoration: line-through;
-}
-
-button.ramo:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-/* Responsive para celulares */
+/* Responsive: en pantallas pequeñas, apilar todo vertical */
 @media (max-width: 768px) {
   .contenedor-malla {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-    padding: 0 20px;
+    flex-direction: column;
+    align-items: center;
   }
+
   .grupo-anio {
-    margin-bottom: 30px;
-    talign-items: center;
+    width: 90%;
+    max-width: 400px;
   }
+
   .fila-semestres {
     flex-direction: column;
     gap: 15px;
     width: 100%;
   }
+
   .semestre {
     width: 100%;
   }
-   .anio {
-    width: 100%;
-    margin-bottom: 15px;
-  }
 }
+
