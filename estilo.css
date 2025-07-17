@@ -43,12 +43,9 @@ h1 {
 }
 
 .contenedor-malla {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  max-width: calc(280px * 4 + 30px * 3);
+  max-width: calc(280px * 2 + 30px); /* Dos semestres por fila + gap */
   margin: 0 auto;
-  text-align: center;
+  padding: 0 20px;
 }
 
 .grupo-anio {
@@ -61,26 +58,56 @@ h1 {
 .anio {
   font-weight: bold;
   color: #33105D;
+  font-size: 24px;       /* tamaño más visible */
   margin-bottom: 12px;
-  font-size: 18px;
   text-align: center;
+  width: 100%;           /* para que el texto se centre y no quede pequeño */
+  user-select: none;
 }
 
 .fila-semestres {
   display: flex;
-  gap: 20px;
-  flex-wrap: nowrap;
+  gap: 30px;
   justify-content: center;
+  width: 100%;
+  flex-wrap: nowrap;
 }
 
 .semestre {
   width: 280px;
-  background-color: #ccccff; /* Periwinkle */
-  border-left: 8px solid #f3e5f5; /* lila claro */
+  background-color: #ccccff;
+  border-left: 8px solid #f3e5f5;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  text-align: left;
+}
+
+.semestre h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .contenedor-malla {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  .grupo-anio {
+    margin-bottom: 30px;
+    align-items: center;
+  }
+  .anio {
+    font-size: 22px;
+    width: auto;
+    margin-bottom: 15px;
+  }
+  .fila-semestres {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  .semestre {
+    width: 100%;
+  }
 }
 
 .semestre h2 {
@@ -121,27 +148,4 @@ button.ramo:disabled {
   cursor: not-allowed;
 }
 
-/* Responsive para celulares */
-@media (max-width: 768px) {
-  .contenedor-malla {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-    padding: 0 20px;
-  }
-  .grupo-anio {
-    margin-bottom: 30px;
-    talign-items: center;
-  }
-  .fila-semestres {
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-  }
-  .semestre {
-    width: 100%;
-  }
-   .anio {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-}
+
