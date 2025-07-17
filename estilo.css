@@ -63,6 +63,7 @@ button.ramo:disabled {
   border-radius: 5px;
   margin-bottom: 5px;
   overflow: hidden;
+  position: relative;
 }
 
 #barra-progreso {
@@ -70,9 +71,15 @@ button.ramo:disabled {
   background-color: ##4caf50;
   width: 0%;
   transition: width 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 #porcentaje-progreso {
-  font-weight: bold;
-  margin-left: 10px;
+  z-index: 1;
+  pointer-events: none;
 }
