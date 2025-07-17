@@ -1,23 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const botones = document.querySelectorAll(".ramo");
-
-  botones.forEach(boton => {
-    boton.addEventListener("click", () => {
-      if (boton.classList.contains("aprobado")) {
-        boton.classList.remove("aprobado");
-        desmarcarDependientes(boton.dataset.id);
-      } else {
-        boton.classList.add("aprobado");
-      }
-      guardarEstado();
-      actualizarEstadoRequisitos();
-      actualizarBarraProgreso();
-    });
-  });
+  function obtenerBotones() {
+    return document.querySelectorAll(".ramo");
+  }
 
   function guardarEstado() {
     const estado = {};
-    botones.forEach(boton => {
+    obtenerBotones().forEach(boton => {
       estado[boton.dataset.id] = boton.classList.contains("aprobado");
     });
     localStorage.setItem("estadoRamos", JSON.stringify(estado));
@@ -27,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const estadoGuardado = localStorage.getItem("estadoRamos");
     if (!estadoGuardado) return;
     const estado = JSON.parse(estadoGuardado);
-    botones.forEach(boton => {
+    obtenerBotones().forEach(boton => {
       if (estado[boton.dataset.id]) {
         boton.classList.add("aprobado");
       }
@@ -35,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function actualizarEstadoRequisitos() {
-    botones.forEach(boton => {
+    obtenerBotones().forEach(boton => {
       const requisitos = boton.dataset.requisitos;
       if (requisitos) {
         const cumplido = requisitos.split(",").every(id => {
@@ -48,16 +36,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function actualizarBarraProgreso() {
-    const total = botones.length;
+    const total = obtenerBotones().length;
     const aprobados = document.querySelectorAll(".ramo.aprobado").length;
-    const porcentaje = Math.round((aprobados / total) * 10);
+    const porcentaje = Math.round((aprobados / total) * 100);
     const barra = document.getElementById("barra-progreso");
     barra.style.width = `${porcentaje}%`;
     document.getElementById("porcentaje-progreso").textContent = `${porcentaje}%`;
   }
 
   function desmarcarDependientes(ramoId) {
-    botones.forEach(boton => {
+    obtenerBotones().forEach(boton => {
       const requisitos = boton.dataset.requisitos?.split(",") || [];
       if (requisitos.includes(ramoId) && boton.classList.contains("aprobado")) {
         boton.classList.remove("aprobado");
@@ -66,6 +54,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  obtenerBotones().forEach(boton => {
+    boton.addEventListener("click", () => {
+      if (boton.classList.contains("aprobado")) {
+        boton.classList.remove("aprobado");
+        desmarcarDependientes(boton.dataset.id);
+      } else {
+        boton.classList.add("aprobado");
+      }
+      guardarEstado();
+      actualizarEstadoRequisitos();
+      actualizarBarraProgreso();
+    });
+  });
+  
   // Inicializar
   cargarEstado();
   actualizarEstadoRequisitos();
