@@ -43,42 +43,41 @@ h1 {
 }
 
 .contenedor-malla {
-  max-width: calc(280px * 4 + 30px * 3); /* 4 columnas + 3 gaps */
+  max-width: calc(280px * 2 + 30px); /* Dos semestres por fila + gap */
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Años: fila arriba, 4 columnas */
-.fila-anios {
-  display: grid;
-  grid-template-columns: repeat(4, 280px);
-  gap: 30px;
-  margin-bottom: 15px;
+
+.grupo-anio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.anio {
   font-weight: bold;
   color: #33105D;
-  font-size: 18px;
+  font-size: 24px;       /* tamaño más visible */
+  margin-bottom: 12px;
   text-align: center;
+  width: 100%;           /* para que el texto se centre y no quede pequeño */
   user-select: none;
 }
 
-/* Semestres: dos filas, 4 columnas */
+
 .fila-semestres {
-  display: grid;
-  grid-template-columns: repeat(4, 280px);
-  grid-template-rows: repeat(2, auto);
+  display: flex;
   gap: 30px;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: nowrap;
 }
 
-/* Impares arriba (fila 1), pares abajo (fila 2) */
-.fila-semestres > div.semestre:nth-child(odd) {
-  grid-row: 1;
-}
-
-.fila-semestres > div.semestre:nth-child(even) {
-  grid-row: 2;
-}
 
 .semestre {
+  width: 280px;
   background-color: #ccccff;
   border-left: 8px solid #f3e5f5;
   padding: 15px;
@@ -90,10 +89,40 @@ h1 {
   margin-top: 0;
 }
 
+@media (max-width: 768px) {
+  .contenedor-malla {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  .grupo-anio {
+    margin-bottom: 30px;
+    align-items: center;
+  }
+  .anio {
+    font-size: 22px;
+    width: auto;
+    margin-bottom: 15px;
+  }
+  .fila-semestres {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  .semestre {
+    width: 100%;
+  }
+}
+
+.semestre h2 {
+  margin-top: 0;
+
+
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
-  margin: 0;
+
 }
 
 button.ramo {
@@ -106,6 +135,7 @@ button.ramo {
   cursor: pointer;
   width: 100%;
   text-align: left;
+
   transition: 0.3s;
 }
 
@@ -123,33 +153,4 @@ button.ramo.aprobado {
 button.ramo:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-/* Responsive para pantallas pequeñas */
-@media (max-width: 768px) {
-  .contenedor-malla {
-    max-width: 100%;
-    padding: 0 10px;
-  }
-
-  .fila-anios {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    font-size: 20px;
-    margin-bottom: 25px;
-  }
-
-  .fila-semestres {
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-    gap: 15px;
-  }
-
-  .fila-semestres > div.semestre {
-    grid-row: auto !important;
-  }
-  
-  .semestre {
-    width: 100% !important;
-  }
-}
+} 
