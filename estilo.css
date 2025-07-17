@@ -11,96 +11,12 @@ h1 {
   margin-bottom: 20px;
 }
 
-.contenedor-malla {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-}
-
-/* Cada grupo-anio será un bloque con año arriba y dos semestres en fila */
-.grupo-anio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px; /* ajusta si quieres */
-}
-
-.anio {
-  font-weight: bold;
-  color: #33105D;
-  font-size: 22px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-/* Fila de los semestres (dos por año) */
-.fila-semestres {
-  display: flex;
-  gap: 30px;
-  width: 100%;
-  justify-content: center;
-}
-
-/* Cada semestre es un cuadro */
-.semestre {
-  width: 140px; /* la mitad del ancho del grupo-anio menos gap */
-  background-color: #ccccff;
-  border-left: 8px solid #f3e5f5;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
-}
-
-.semestre h2 {
-  margin-top: 0;
-  font-size: 16px;
-  text-align: center;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-button.ramo {
-  background-color: #ffffff;
-  border: 2px solid #f3e5f5;
-  color: #333;
-  padding: 6px 8px;
-  margin: 3px 0;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-  font-size: 12px;
-  transition: 0.3s;
-}
-
-button.ramo:hover {
-  background-color: #ede7f6;
-}
-
-button.ramo.aprobado {
-  background-color: #c8e6c9;
-  border-color: #388e3c;
-  color: #2e7d32;
-  text-decoration: line-through;
-}
-
-button.ramo:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-/* Barra progreso, si la usas */
 #barra-progreso-container {
   width: 100%;
   background-color: #ccccff;
   height: 30px;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   overflow: hidden;
   position: relative;
 }
@@ -126,25 +42,114 @@ button.ramo:disabled {
   pointer-events: none;
 }
 
-/* Responsive: en pantallas pequeñas, apilar todo vertical */
+.contenedor-malla {
+  max-width: calc(280px * 4 + 30px * 3); /* 4 columnas + 3 gaps */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Años: fila arriba, 4 columnas */
+.fila-anios {
+  display: grid;
+  grid-template-columns: repeat(4, 280px);
+  gap: 30px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #33105D;
+  font-size: 18px;
+  text-align: center;
+  user-select: none;
+}
+
+/* Semestres: dos filas, 4 columnas */
+.fila-semestres {
+  display: grid;
+  grid-template-columns: repeat(4, 280px);
+  grid-template-rows: repeat(2, auto);
+  gap: 30px;
+}
+
+/* Impares arriba (fila 1), pares abajo (fila 2) */
+.fila-semestres > div.semestre:nth-child(odd) {
+  grid-row: 1;
+}
+
+.fila-semestres > div.semestre:nth-child(even) {
+  grid-row: 2;
+}
+
+.semestre {
+  background-color: #ccccff;
+  border-left: 8px solid #f3e5f5;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.semestre h2 {
+  margin-top: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+button.ramo {
+  background-color: #fff;
+  border: 2px solid #f3e5f5;
+  color: #333;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: 0.3s;
+}
+
+button.ramo:hover {
+  background-color: #ede7f6;
+}
+
+button.ramo.aprobado {
+  background-color: #c8e6c9;
+  border-color: #388e3c;
+  color: #2e7d32;
+  text-decoration: line-through;
+}
+
+button.ramo:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive para pantallas pequeñas */
 @media (max-width: 768px) {
   .contenedor-malla {
-    flex-direction: column;
-    align-items: center;
+    max-width: 100%;
+    padding: 0 10px;
   }
 
-  .grupo-anio {
-    width: 90%;
-    max-width: 400px;
+  .fila-anios {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    font-size: 20px;
+    margin-bottom: 25px;
   }
 
   .fila-semestres {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
     gap: 15px;
-    width: 100%;
   }
 
+  .fila-semestres > div.semestre {
+    grid-row: auto !important;
+  }
+  
   .semestre {
-    width: 100%;
+    width: 100% !important;
   }
 }
