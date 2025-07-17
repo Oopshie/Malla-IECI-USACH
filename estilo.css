@@ -44,10 +44,12 @@ h1 {
 
 .contenedor-malla {
   max-width: calc(280px * 2 + 30px); /* Dos semestres por fila + gap */
+
+
+
   margin: 0 auto;
   padding: 0 20px;
 }
-
 
 .grupo-anio {
   display: flex;
@@ -61,20 +63,20 @@ h1 {
   color: #33105D;
   font-size: 24px;       /* tamaño más visible */
   margin-bottom: 12px;
+
   text-align: center;
   width: 100%;           /* para que el texto se centre y no quede pequeño */
   user-select: none;
 }
 
-
 .fila-semestres {
   display: flex;
   gap: 30px;
+
   justify-content: center;
   width: 100%;
   flex-wrap: nowrap;
 }
-
 
 .semestre {
   width: 280px;
@@ -115,14 +117,11 @@ h1 {
 
 .semestre h2 {
   margin-top: 0;
-
-
 }
 
 ul {
   list-style-type: none;
   padding-left: 0;
-
 }
 
 button.ramo {
@@ -135,7 +134,6 @@ button.ramo {
   cursor: pointer;
   width: 100%;
   text-align: left;
-
   transition: 0.3s;
 }
 
@@ -153,4 +151,4 @@ button.ramo.aprobado {
 button.ramo:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-} 
+}
