@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Interactiva</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <h1>Malla Curricular Interactiva</h1>
+
+  <div class="progreso-container">
+    <div id="barra-progreso" class="barra-progreso"></div>
+  </div>
+  <p id="porcentaje-texto">Progreso: 0%</p>
+
+  <div class="semestre">
+    <h2>1° Semestre</h2>
+    <div class="malla">
+      <div class="ramo" id="calculo1">Cálculo I</div>
+      <div class="ramo" id="algebra">Álgebra</div>
+    </div>
+  </div>
+
+  <div class="semestre">
+    <h2>2° Semestre</h2>
+    <div class="malla">
+      <div class="ramo" id="fisica">Física</div>
+      <div class="ramo" id="calculo2">Cálculo II</div>
+    </div>
+  </div>
+
+  <div class="semestre">
+    <h2>3° Semestre</h2>
+    <div class="malla">
+      <div class="ramo" id="ecuaciones">Ecuaciones Diferenciales</div>
+    </div>
+  </div>
+
+  <button onclick="reiniciarMalla()">Reiniciar Malla</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
