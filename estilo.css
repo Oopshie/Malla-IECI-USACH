@@ -48,23 +48,61 @@ h1 {
 /* 📱 Responsive para pantallas pequeñas */
 @media (max-width: 768px) {
   .contenedor-malla {
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+     padding: 0 10px;
+  }
+    .fila-anios {
+    display: none; /* Ocultamos los años fijos de escritorio */
+  }
+
+  .fila-semestres {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .semestre {
+    width: 100%;
     max-width: 100%;
-    padding: 0 20px;
   }
-  .fila-anios,
-  .fila-semestres {
-    grid-template-columns: 1fr;
-    gap: 15px;
+
+  /* Insertamos los títulos "Año X" dinámicamente antes de cada par de semestres */
+  .semestre:nth-child(1)::before {
+    content: "Año 1";
+    font-weight: bold;
+    font-size: 18px;
+    color: #33105D;
+    display: block;
+    margin-bottom: 5px;
   }
-  .fila-semestres {
-    grid-template-rows: none;
+
+  .semestre:nth-child(3)::before {
+    content: "Año 2";
+    font-weight: bold;
+    font-size: 18px;
+    color: #33105D;
+    display: block;
+    margin-bottom: 5px;
   }
-  .fila-semestres .semestre {
-    grid-row: auto;
-    width: 100%;
+
+  .semestre:nth-child(5)::before {
+    content: "Año 3";
+    font-weight: bold;
+    font-size: 18px;
+    color: #33105D;
+    display: block;
+    margin-bottom: 5px;
   }
-  .anio {
-    width: 100%;
+
+  .semestre:nth-child(7)::before {
+    content: "Año 4";
+    font-weight: bold;
+    font-size: 18px;
+    color: #33105D;
+    display: block;
+    margin-bottom: 5px;
   }
 }
 
