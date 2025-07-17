@@ -18,9 +18,9 @@ h1 {
 
 .fila-anios {
   display: grid;
-  grid-template-columns: repeat(2, 580px); /* 2 años = 2 columnas de 2 semestres */
+  grid-template-columns: repeat(4, 280px); 
+  justify-content: center;
   gap: 30px;
-  justify-content: start;
   margin-bottom: 10px;
   font-weight: bold;
   color: #33105D;
