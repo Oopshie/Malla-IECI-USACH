@@ -53,8 +53,66 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("barra-progreso").style.width = `${porcentaje}%`;
   }
 
+  function actualizarEstadoBotones() {
+    botones.forEach((boton) => {
+      const requisitos = boton.dataset.requisitos?.split(",") || [];
+      const aprobados = requisitos.every((id) => localStorage.getItem(id) === "aprobado");
+
+      if (requisitos.length === 0 || aprobados) {
+        boton.disabled = false;
+      } else {
+        boton.disabled = true;
+      }
+    });
+  }
+
+  function desmarcarDependientes(id) {
+    botones.forEach((boton) => {
+      const requisitos = boton.dataset.requisitos?.split(",") || [];
+
+      if (requisitos.includes(id) && localStorage.getItem(boton.dataset.id) === "aprobado") {
+        // Desmarcar el botón dependiente
+        localStorage.removeItem(boton.dataset.id);
+        boton.classList.remove("aprobado");
+        boton.disabled = true;
+
+        // Llamada recursiva para desmarcar más abajo en la cadena
+        desmarcarDependientes(boton.dataset.id);
+      }
+    });
+  }
+
+    botones.forEach((boton) => {
+    const id = boton.dataset.id;
+
+    // Restaurar estado desde localStorage
+    if (localStorage.getItem(id) === "aprobado") {
+      boton.classList.add("aprobado");
+    }
+
+    boton.addEventListener("click", () => {
+      if (boton.classList.contains("aprobado")) {
+        // Desmarcar
+        boton.classList.remove("aprobado");
+        localStorage.removeItem(id);
+
+        // Desmarcar dependientes si los hay
+        desmarcarDependientes(id);
+      } else {
+        // Marcar como aprobado
+        boton.classList.add("aprobado");
+        localStorage.setItem(id, "aprobado");
+      }
+
+      actualizarEstadoBotones();
+    });
+  });
+
+  
+
   // Inicializar
   cargarEstado();
   actualizarEstadoRequisitos();
   actualizarBarraProgreso();
+  actualizarEstadoBotones();
 });
