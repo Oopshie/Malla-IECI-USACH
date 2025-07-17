@@ -59,7 +59,7 @@ button.ramo:disabled {
 #barra-progreso-container {
   width: 100%;
   background-color: #ddd;
-  height: 20px;
+  height: 30px;
   border-radius: 5px;
   margin-bottom: 5px;
   overflow: hidden;
@@ -67,8 +67,8 @@ button.ramo:disabled {
 }
 
 #barra-progreso {
-  height: 30px;
-  background-color: #4caf50;
+  height: 100%;
+  background-color: #ccccff;
   width: 0%;
   transition: width 0.3s;
   display: flex;
@@ -77,9 +77,12 @@ button.ramo:disabled {
   color: #33105D;
   font-weight: bold;
   font-size: 14px;
+  line-height: 30px;        /* iguala la altura de línea a la barra */
+  box-sizing: border-box;   /* para que el padding no afecte tamaño */
 }
 
 #porcentaje-progreso {
+  margin-left: 8px;
   z-index: 1;
   pointer-events: none;
 }
