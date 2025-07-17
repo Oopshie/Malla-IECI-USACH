@@ -9,11 +9,15 @@
 <body>
   <h1>Malla Interactiva</h1>
 
+  <div id="barra-progreso-container">
+    <div id="barra-progreso"></div>
+  </div>
+
   <div class="semestre">
     <h2>Semestre 1</h2>
     <ul>
-      <li><button class="ramo" data-id="C1">Calculo I para ingeniería</button></li>
-      <li><button class="ramo" data-id="A1">Algebra I para ingeniería</button></li>
+      <li><button class="ramo" data-id="C1">Cálculo I para ingeniería</button></li>
+      <li><button class="ramo" data-id="A1">Álgebra I para ingeniería</button></li>
       <li><button class="ramo" data-id="F1">Física I para ingeniería</button></li>
       <li><button class="ramo" data-id="TDPI">Taller de desarrollo personal e integral</button></li>
       <li><button class="ramo" data-id="II">Introducción a la ingeniería</button></li>
@@ -24,8 +28,8 @@
   <div class="semestre">
     <h2>Semestre 2</h2>
     <ul>
-      <li><button class="ramo" data-id="mate2" data-requisitos="mate1">Matemática II</button></li>
-      <li><button class="ramo" data-id="prog2" data-requisitos="prog1">Programación II</button></li>
+      <li><button class="ramo" data-id="mate2" data-requisitos="C1,A1">Matemática II</button></li>
+      <li><button class="ramo" data-id="prog2" data-requisitos="II">Programación II</button></li>
     </ul>
   </div>
 
