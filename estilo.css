@@ -11,25 +11,24 @@ h1 {
   margin-bottom: 20px;
 }
 
-.fila-anios {
+.contenedor-malla {
+  max-width: calc(280px * 4 + 30px * 3); /* 4 columnas de 280px + 3 gaps de 30px */
+  margin: 0 auto; /* centro horizontal */
+}
+
+.fila-anios, .fila-semestres {
   display: grid;
   grid-template-columns: repeat(4, 280px);
-  justify-content: center;
+  justify-content: start;
   gap: 30px;
   margin-bottom: 10px;
+}
+
+.fila-anios {
   font-weight: bold;
   color: #33105D;
   font-size: 18px;
   text-align: center;
-}
-
-.fila-semestres {
-  display: grid;
-  grid-template-columns: repeat(4, 280px);
-  grid-template-rows: repeat(2, auto);
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 30px;
 }
 
 /* Distribuir impares arriba y pares abajo */
@@ -43,29 +42,26 @@ h1 {
 
 /* 📱 Responsive para pantallas pequeñas */
 @media (max-width: 768px) {
-  .fila-anios {
-    grid-template-columns: 1fr;
-    text-align: center;
+  .contenedor-malla {
+    max-width: 100%;
+    padding: 0 20px;
   }
-  
+  .fila-anios,
   .fila-semestres {
-
-    grid-template-rows: none;
     grid-template-columns: 1fr;
-
+    gap: 15px;
   }
-
+  .fila-semestres {
+    grid-template-rows: none;
+  }
   .fila-semestres .semestre {
     grid-row: auto;
     width: 100%;
   }
-  
   .anio {
     width: 100%;
   }
-  
 }
-
 
 .semestre {
   width: 280px;
