@@ -12,69 +12,64 @@ h1 {
 }
 
 .contenedor-malla {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
+  max-width: calc(280px * 2 + 30px); /* 2 semestres + gap */
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* Cada grupo-anio será un bloque con año arriba y dos semestres en fila */
 .grupo-anio {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px; /* ajusta si quieres */
+  margin-bottom: 40px;
 }
 
 .anio {
   font-weight: bold;
   color: #33105D;
-  font-size: 22px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 12px;
   text-align: center;
+  width: 100%;
+  user-select: none;
 }
 
-/* Fila de los semestres (dos por año) */
 .fila-semestres {
   display: flex;
   gap: 30px;
-  width: 100%;
   justify-content: center;
+  width: 100%;
+  flex-wrap: nowrap;
 }
 
-/* Cada semestre es un cuadro */
 .semestre {
-  width: 140px; /* la mitad del ancho del grupo-anio menos gap */
+  width: 280px;
   background-color: #ccccff;
   border-left: 8px solid #f3e5f5;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
 .semestre h2 {
   margin-top: 0;
-  font-size: 16px;
-  text-align: center;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
-  margin: 0;
 }
 
 button.ramo {
   background-color: #ffffff;
   border: 2px solid #f3e5f5;
   color: #333;
-  padding: 6px 8px;
-  margin: 3px 0;
+  padding: 10px;
+  margin: 5px 0;
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
   text-align: left;
-  font-size: 12px;
   transition: 0.3s;
 }
 
@@ -94,58 +89,8 @@ button.ramo:disabled {
   cursor: not-allowed;
 }
 
-/* Barra progreso, si la usas */
-#barra-progreso-container {
-  width: 100%;
-  background-color: #ccccff;
-  height: 30px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  overflow: hidden;
-  position: relative;
-}
-
-#barra-progreso {
-  height: 100%;
-  background-color: #33105D;
-  width: 0%;
-  transition: width 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 30px;
-  box-sizing: border-box;
-}
-
-#porcentaje-progreso {
-  margin-left: 8px;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Responsive: en pantallas pequeñas, apilar todo vertical */
+/* 📱 Responsive para móviles */
 @media (max-width: 768px) {
   .contenedor-malla {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .grupo-anio {
-    width: 90%;
-    max-width: 400px;
-  }
-
-  .fila-semestres {
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-  }
-
-  .semestre {
-    width: 100%;
-  }
-}
-
+    max-width: 100%;
+    padding:
