@@ -12,11 +12,35 @@ h1 {
 }
 
 .fila-semestres {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, auto);
   justify-content: center;
   gap: 30px;
-  flex-wrap: wrap;
   margin-bottom: 30px;
+}
+
+/* Distribuir impares arriba y pares abajo */
+.fila-semestres .semestre:nth-child(odd) {
+  grid-row: 1;
+}
+
+.fila-semestres .semestre:nth-child(even) {
+  grid-row: 2;
+}
+
+/* 📱 Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  .fila-semestres {
+    grid-auto-flow: row;
+    grid-template-rows: none;
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+  }
+
+  .fila-semestres .semestre {
+    grid-row: auto;
+  }
 }
 
 .semestre {
