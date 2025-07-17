@@ -58,7 +58,7 @@ button.ramo:disabled {
 
 #barra-progreso-container {
   width: 100%;
-  background-color: #ddd;
+  background-color: #ccccff;
   height: 30px;
   border-radius: 5px;
   margin-bottom: 5px;
@@ -68,13 +68,13 @@ button.ramo:disabled {
 
 #barra-progreso {
   height: 100%;
-  background-color: #ccccff;
+  background-color: #33105D;
   width: 0%;
   transition: width 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #33105D;
+  color: white;
   font-weight: bold;
   font-size: 14px;
   line-height: 30px;        /* iguala la altura de línea a la barra */
