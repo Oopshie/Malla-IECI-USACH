@@ -2,128 +2,76 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malla Interactiva</title>
-  <link rel="stylesheet" href="estilo.css" />
+  <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
-  <h1>Malla Interactiva</h1>
-
   <div class="contenedor-malla">
-
-    <div class="grupo-anio">
-      <div class="anio">Año 1</div>
-      <div class="fila-semestres">
-        <div class="semestre">
-          <h2>Semestre 1</h2>
-          <ul>
-            <li><button class="ramo" data-id="C1">Cálculo I para ingeniería</button></li>
-            <li><button class="ramo" data-id="A1">Álgebra I para ingeniería</button></li>
-            <li><button class="ramo" data-id="F1">Física I para ingeniería</button></li>
-            <li><button class="ramo" data-id="TDPI">Taller de desarrollo personal e integral</button></li>
-            <li><button class="ramo" data-id="II">Introducción a la ingeniería</button></li>
-            <li><button class="ramo" data-id="ME">Métodos de estudio</button></li>
-          </ul>
-        </div>
-
-        <div class="semestre">
-          <h2>Semestre 2</h2>
-          <ul>
-            <li><button class="ramo" data-id="C2" data-requisitos="C1">Cálculo II para ingeniería</button></li>
-            <li><button class="ramo" data-id="A2" data-requisitos="A1">Álgebra II para ingeniería</button></li>
-            <li><button class="ramo" data-id="F2" data-requisitos="F1">Física II para ingeniería</button></li>
-            <li><button class="ramo" data-id="PROGRA" data-requisitos="A1">Fundamentos de computación y programación</button></li>
-            <li><button class="ramo" data-id="QG">Química General</button></li>
-            <li><button class="ramo" data-id="III" data-requisitos="II">Introducción a la ingeniería informática</button></li>
-          </ul>
-        </div>
+    <div class="barra-superior">
+      <div id="progreso-container">
+        <div id="barra-progreso"></div>
+        <span id="porcentaje-progreso">0%</span>
       </div>
     </div>
 
-    <div class="grupo-anio">
-      <div class="anio">Año 2</div>
-      <div class="fila-semestres">
-        <div class="semestre">
-          <h2>Semestre 3</h2>
-          <ul>
-            <li><button class="ramo" data-id="AE" data-requisitos="C2">Análisis estadístico para ingeniería</button></li>
-            <li><button class="ramo" data-id="EDO" data-requisitos="C2,PROGRA">Ecuaciones diferenciales y métodos numéricos para ingeniería</button></li>
-            <li><button class="ramo" data-id="ELECTRO" data-requisitos="F2,C2">Electricidad y magnetismo para ingeniería</button></li>
-            <li><button class="ramo" data-id="CE" data-requisitos="TDPI">Comunicación efectiva</button></li>
-            <li><button class="ramo" data-id="I1" data-requisitos="ME">Inglés I</button></li>
-            <li><button class="ramo" data-id="MP" data-requisitos="PROGRA,III">Métodos de programación</button></li>
-          </ul>
-        </div>
-
-        <div class="semestre">
-          <h2>Semestre 4</h2>
-          <ul>
-            <li><button class="ramo" data-id="ECONO" data-requisitos="C1">Fundamentos de economía</button></li>
-            <li><button class="ramo" data-id="PARAD" data-requisitos="MP">Paradigmas de la programación</button></li>
-            <li><button class="ramo" data-id="AAEDA" data-requisitos="MP">Análisis de algoritmos y estructuras de datos</button></li>
-            <li><button class="ramo" data-id="INGESIS" data-requisitos="II,QG,AE">Ingeniería de sistemas</button></li>
-            <li><button class="ramo" data-id="I2" data-requisitos="I1">Inglés II</button></li>
-            <li><button class="ramo" data-id="EDECO" data-requisitos="A2,ELECTRO">Estructura de computadores</button></li>
-          </ul>
-        </div>
+    <div class="anio">
+      <h2>1° Año</h2>
+      <div class="semestre impar">
+        <button class="ramo" data-id="intro">Intro a la informática</button>
+        <button class="ramo" data-id="mate1">Cálculo I</button>
+        <button class="ramo" data-id="fisica1">Física I</button>
+      </div>
+      <div class="semestre par">
+        <button class="ramo" data-id="prog1" data-requisitos="intro">Programación I</button>
+        <button class="ramo" data-id="mate2" data-requisitos="mate1">Cálculo II</button>
+        <button class="ramo" data-id="fisica2" data-requisitos="fisica1">Física II</button>
       </div>
     </div>
 
-    <div class="grupo-anio">
-      <div class="anio">Año 3</div>
-      <div class="fila-semestres">
-        <div class="semestre">
-          <h2>Semestre 5</h2>
-          <ul>
-            <li><button class="ramo" data-id="FINGESO" data-requisitos="PARAD">Fundamentos de ingeniería de software</button></li>
-            <li><button class="ramo" data-id="INSO" data-requisitos="CE">Informática y sociedad</button></li>
-            <li><button class="ramo" data-id="SISINFO" data-requisitos="INGESIS">Sistemas de información</button></li>
-            <li><button class="ramo" data-id="DBD" data-requisitos="PARAD"> Diseño de base de datos</button></li>
-            <li><button class="ramo" data-id="I3" data-requisitos="I2">Inglés III</button></li>
-            <li><button class="ramo" data-id="ORGA" data-requisitos="EDECO">Organización de computadores</button></li>
-            <li><button class="ramo" data-id="EVAPRO" data-requisitos="EDO">Evaluación de proyectos informáticos</button></li>
-          </ul>
-        </div>
-
-        <div class="semestre">
-          <h2>Semestre 6</h2>
-          <ul>
-            <li><button class="ramo" data-id="SISTOPE" data-requisitos="AAEDA,ORGA">Sistemas operativos</button></li>
-            <li><button class="ramo" data-id="TBD" data-requisitos="FINGESO,DBD">Taller de base de datos</button></li>
-            <li><button class="ramo" data-id="TINGESO" data-requisitos="FINGESO">Técnicas de ingeniería de software</button></li>
-            <li><button class="ramo" data-id="REDES" data-requisitos="ORGA">Redes computacionales</button></li>
-            <li><button class="ramo" data-id="I4" data-requisitos="I3">Inglés IV</button></li>
-            <li><button class="ramo" data-id="ADMIN" data-requisitos="EVAPRO">Administración de proyectos informáticos</button></li>
-          </ul>
-        </div>
+    <div class="anio">
+      <h2>2° Año</h2>
+      <div class="semestre impar">
+        <button class="ramo" data-id="estructura" data-requisitos="prog1">Estructura de Datos</button>
+        <button class="ramo" data-id="algebra">Álgebra Lineal</button>
+        <button class="ramo" data-id="electivo1">Electivo 1</button>
+      </div>
+      <div class="semestre par">
+        <button class="ramo" data-id="bd" data-requisitos="estructura">Bases de Datos</button>
+        <button class="ramo" data-id="redes" data-requisitos="estructura">Redes de Computadores</button>
+        <button class="ramo" data-id="estadistica" data-requisitos="mate2">Estadística</button>
       </div>
     </div>
 
-    <div class="grupo-anio">
-      <div class="anio">Año 4</div>
-      <div class="fila-semestres">
-        <div class="semestre">
-          <h2>Semestre 7</h2>
-          <ul>
-            <li><button class="ramo" data-id="PINGESO" data-requisitos="TBD,TINGESO,ADMIN">Proyecto de ingeniería de software</button></li>
-            <li><button class="ramo" data-id="T1" data-requisitos="TINGESO,REDES">Tópico de especialidad I</button></li>
-            <li><button class="ramo" data-id="T2" data-requisitos="TINGESO,REDES">Tópico de especialidad II</button></li>
-            <li><button class="ramo" data-id="T3" data-requisitos="TINGESO,REDES,ADMIN">Tópico de especialidad III</button></li>
-            <li><button class="ramo" data-id="SEM" data-requisitos="INSO,SISINFO,SISTOPE,TBD">Seminario de computación e informática</button></li>
-          </ul>
-        </div>
-
-        <div class="semestre">
-          <h2>Semestre 8</h2>
-          <ul>
-            <li><button class="ramo" data-id="TESIS" data-requisitos="SEM">Trabajo de titulación</button></li>
-          </ul>
-        </div>
+    <div class="anio">
+      <h2>3° Año</h2>
+      <div class="semestre impar">
+        <button class="ramo" data-id="so" data-requisitos="estructura">Sistemas Operativos</button>
+        <button class="ramo" data-id="ingenieria" data-requisitos="estructura,estadistica">Ing. de Software</button>
+        <button class="ramo" data-id="electivo2">Electivo 2</button>
+      </div>
+      <div class="semestre par">
+        <button class="ramo" data-id="ia" data-requisitos="estructura,estadistica">Inteligencia Artificial</button>
+        <button class="ramo" data-id="seguridad" data-requisitos="redes">Seguridad Informática</button>
+        <button class="ramo" data-id="electivo3">Electivo 3</button>
       </div>
     </div>
 
+    <div class="anio">
+      <h2>4° Año</h2>
+      <div class="semestre impar">
+        <button class="ramo" data-id="tesis1" data-requisitos="ingenieria">Tesis I</button>
+        <button class="ramo" data-id="gestion">Gestión de Proyectos</button>
+        <button class="ramo" data-id="electivo4">Electivo 4</button>
+      </div>
+      <div class="semestre par">
+        <button class="ramo" data-id="tesis2" data-requisitos="tesis1">Tesis II</button>
+        <button class="ramo" data-id="etica">Ética Profesional</button>
+        <button class="ramo" data-id="electivo5">Electivo 5</button>
+      </div>
+    </div>
   </div>
-  <script src="script.js"></script>
 
+  <script src="script.js"></script>
 </body>
 </html>
