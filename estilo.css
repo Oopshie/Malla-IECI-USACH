@@ -34,6 +34,14 @@ h1 {
   background-color: #4caf50; /* verde */
   width: 0%; /* inicia en 0% */
   transition: width 0.3s ease;
+
+  /* Centrar texto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  user-select: none;
 }
 
 /* Texto con porcentaje debajo de barra */
