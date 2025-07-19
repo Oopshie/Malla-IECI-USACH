@@ -68,7 +68,7 @@ h1 {
 @media (min-width: 768px) {
   .contenedor-malla {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+    grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 4 columnas iguales */
     gap: 30px; /* espacio entre columnas */
   }
 }
@@ -102,7 +102,7 @@ h1 {
   border-radius: 8px;
   flex: 1;
   margin-bottom: 20px;
-  min-width: 180px;
+  min-width: 240px;
   box-shadow: 0 0 6px rgba(0,0,0,0.1); /* sombra ligera */
 }
 
