@@ -72,19 +72,20 @@ h1 {
     gap: 30px; /* espacio entre columnas */
     align-items: stretch;
   }
+  
   .grupo-anio{
     display: flex;
     flex-direction: column;
-    justify-content: space between;
     height: 100%;
+    padding-top: 30px;
   }
 }
 
 /* Cada grupo de año se muestra como un grid con 2 filas para semestres */
 .grupo-anio {
-  display: grid;
-  grid-template-rows: auto auto auto; /* dos filas: semestre 1 y semestre 2 */
-  gap: 20px; /* espacio vertical entre semestres */
+  /*display: grid;*/
+  /*grid-template-rows: auto auto auto; /* dos filas: semestre 1 y semestre 2 */
+  /*gap: 20px; /* espacio vertical entre semestres */
   background-color: #ccccff;  /* color suave de fondo */
   border-radius: 10px; /* bordes redondeados */
   justify-items: center;
@@ -114,6 +115,7 @@ h1 {
   padding: 10px 15px;
   border-radius: 8px;
   margin-bottom: 20px;
+  margin-top: 20px; 
   max-width: 90%;
   width: 90%;
   margin-left: auto;
