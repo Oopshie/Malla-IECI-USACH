@@ -83,6 +83,11 @@ h1 {
   justify-items: center;
   padding: 15px; /* espacio interno */
   box-shadow: 0 0 8px rgba(0,0,0,0.1); /* sombra suave */
+  .grupo-anio {
+  min-width: 280px; 
+  max-width: 320px; 
+}
+
 }
 
 /* Estilo para el título del año */
@@ -102,7 +107,6 @@ h1 {
   padding: 10px 15px;
   border-radius: 8px;
   margin-bottom: 20px;
-  min-width: 260px;
   max-width: 90%;
   width: 90%;
   margin-left: auto;
