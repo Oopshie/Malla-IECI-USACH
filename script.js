@@ -1,75 +1,51 @@
-document.addEventListener("DOMContentLoaded", () => {
-  function obtenerBotones() {
-    return document.querySelectorAll(".ramo");
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  const botones = document.querySelectorAll('.ramo');
 
-  function guardarEstado() {
-    const estado = {};
-    obtenerBotones().forEach(boton => {
-      estado[boton.dataset.id] = boton.classList.contains("aprobado");
-    });
-    localStorage.setItem("estadoRamos", JSON.stringify(estado));
-  }
+  const estado = {};
 
-  function cargarEstado() {
-    const estadoGuardado = localStorage.getItem("estadoRamos");
-    if (!estadoGuardado) return;
-    const estado = JSON.parse(estadoGuardado);
-    obtenerBotones().forEach(boton => {
-      if (estado[boton.dataset.id]) {
-        boton.classList.add("aprobado");
-      }
-    });
-  }
+  botones.forEach(boton => {
+    const id = boton.dataset.id;
+    estado[id] = false;
 
-  function actualizarEstadoRequisitos() {
-    obtenerBotones().forEach(boton => {
-      const requisitos = boton.dataset.requisitos;
-      if (requisitos) {
-        const cumplido = requisitos.split(",").every(id => {
-          const req = document.querySelector(`[data-id="${id}"]`);
-          return req && req.classList.contains("aprobado");
-        });
-        boton.disabled = !cumplido;
-      }
-    });
-  }
+    boton.addEventListener('click', () => {
+      if (boton.disabled) return;
 
-  function actualizarBarraProgreso() {
-    const total = obtenerBotones().length;
-    const aprobados = document.querySelectorAll(".ramo.aprobado").length;
-    const porcentaje = Math.round((aprobados / total) * 100);
-    const barra = document.getElementById("barra-progreso");
-    barra.style.width = `${porcentaje}%`;
-    document.getElementById("porcentaje-progreso").textContent = `${porcentaje}%`;
-  }
+      const aprobado = boton.classList.toggle('aprobado');
+      estado[id] = aprobado;
 
-  function desmarcarDependientes(ramoId) {
-    obtenerBotones().forEach(boton => {
-      const requisitos = boton.dataset.requisitos?.split(",") || [];
-      if (requisitos.includes(ramoId) && boton.classList.contains("aprobado")) {
-        boton.classList.remove("aprobado");
-        desmarcarDependientes(boton.dataset.id); // llamada recursiva
-      }
-    });
-  }
-
-  obtenerBotones().forEach(boton => {
-    boton.addEventListener("click", () => {
-      if (boton.classList.contains("aprobado")) {
-        boton.classList.remove("aprobado");
-        desmarcarDependientes(boton.dataset.id);
-      } else {
-        boton.classList.add("aprobado");
-      }
-      guardarEstado();
-      actualizarEstadoRequisitos();
-      actualizarBarraProgreso();
+      actualizarEstado();
     });
   });
-  
-  // Inicializar
-  cargarEstado();
-  actualizarEstadoRequisitos();
-  actualizarBarraProgreso();
+
+  function actualizarEstado() {
+    // Desactivar ramos si algún prerrequisito no está aprobado
+    botones.forEach(boton => {
+      const id = boton.dataset.id;
+      const prerqs = boton.dataset.prerqs ? boton.dataset.prerqs.split(',') : [];
+
+      // Habilitar solo si todos los prerrequisitos están aprobados
+      const habilitado = prerqs.every(pr => estado[pr]);
+
+      if (prerqs.length > 0) {
+        boton.disabled = !habilitado;
+        if (!habilitado) {
+          boton.classList.remove('aprobado');
+          estado[id] = false;
+        }
+      }
+    });
+
+    actualizarProgreso();
+  }
+
+  function actualizarProgreso() {
+    const total = Object.keys(estado).length;
+    const completados = Object.values(estado).filter(v => v).length;
+    const porcentaje = Math.round((completados / total) * 100);
+
+    document.getElementById('barraProgreso').style.width = `${porcentaje}%`;
+    document.getElementById('porcentaje').textContent = `${porcentaje}%`;
+  }
+
+  actualizarEstado();
 });
