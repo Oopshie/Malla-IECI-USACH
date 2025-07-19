@@ -1,132 +1,89 @@
 body {
-  max-width: 1200px;
   font-family: Arial, sans-serif;
-  margin: 20px auto;
-  padding: 0 20px;
-  background: #f7f7f7;
+  text-align: center;
+  padding: 20px;
+  background-color: #f4f4f4;
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-#progreso-container {
-  width: 100%;
-  background-color: #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 30px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-}
-
-#barra-progreso {
-  height: 25px;
-  background-color: #4caf50;
-  width: 0%;
-  transition: width 0.3s ease;
-}
-
-#porcentaje-progreso {
-  text-align: center;
-  margin-top: 8px;
-  font-weight: bold;
-  color: #333;
-}
-
-.contenedor-malla {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.grupo-anio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.anio {
-  font-weight: bold;
-  color: #33105D;
-  font-size: 24px;
-  margin-bottom: 12px;
-  text-align: center;
-  width: 100%;
-  user-select: none;
-}
-
-.fila-semestres {
-  display: flex;
+.malla-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
+  justify-items: center;
+}
+
+.columna-año {
+  background: white;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .semestre {
-  flex: 1 1 280px;
-  max-width: 300px;
-  background-color: #ccccff;
-  border-left: 8px solid #f3e5f5;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-}
-
-.semestre h2 {
-  margin-top: 0;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
+  margin: 10px 0;
 }
 
 button.ramo {
-  background-color: #ffffff;
-  border: 2px solid #f3e5f5;
-  color: #333;
-  padding: 10px;
-  margin: 5px 0;
+  display: block;
+  margin: 5px auto;
+  padding: 10px 15px;
   border-radius: 8px;
+  border: none;
+  background-color: #ddd;
+  transition: background-color 0.3s;
   cursor: pointer;
-  width: 100%;
-  text-align: left;
-  transition: 0.3s;
-}
-
-button.ramo:hover {
-  background-color: #ede7f6;
 }
 
 button.ramo.aprobado {
-  background-color: #c8e6c9;
-  border-color: #388e3c;
-  color: #2e7d32;
-  text-decoration: line-through;
+  background-color: #4caf50;
+  color: white;
 }
 
 button.ramo:disabled {
-  opacity: 0.6;
+  background-color: #ccc;
   cursor: not-allowed;
 }
 
-/* 📱 Responsive para móviles */
+.barra-progreso-container {
+  position: relative;
+  width: 80%;
+  height: 25px;
+  background-color: #ddd;
+  border-radius: 20px;
+  margin: 0 auto 30px;
+}
+
+.barra-progreso {
+  height: 100%;
+  width: 0;
+  background-color: #4caf50;
+  border-radius: 20px;
+  transition: width 0.3s;
+}
+
+#porcentaje {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+/* Vista para celulares */
 @media (max-width: 768px) {
-  .fila-semestres {
+  .malla-grid {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .semestre {
-    width: 100%;
-    max-width: none;
-  }
-
-  #barra-progreso {
-    height: 20px;
+  .columna-año {
+    width: 90%;
   }
 }
