@@ -21,19 +21,21 @@ h1 {
 /* CONTENEDOR DE BARRA DE PROGRESO */
 #progreso-container {
   width: 100%;
+  height: 20px;
   background-color: #ddd; /* gris claro */
-  border-radius: 8px;
+  border-radius: 5px;
   overflow: hidden;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  position: relative;
 }
 
 /* Barra interna que crecerá según avance */
 #barra-progreso {
-  height: 25px;
+  height: 100%;
   background-color: #4caf50; /* verde */
   width: 0%; /* inicia en 0% */
-  transition: width 0.3s ease;
+  transition: width 0.3s;
 
   /* Centrar texto */
   display: flex;
@@ -44,10 +46,11 @@ h1 {
   user-select: none;
 }
 
-/* Texto con porcentaje debajo de barra */
+/* Texto con porcentaje en de barra */
 #porcentaje-progreso {
-  text-align: center;
-  margin-bottom: 30px;
+
+  z-index: 1;
+  pointer-events: none;
   font-weight: bold;
   color: #333;
 }
