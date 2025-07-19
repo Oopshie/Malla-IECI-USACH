@@ -81,12 +81,12 @@ h1 {
   background-color: #ccccff;  /* color suave de fondo */
   border-radius: 10px; /* bordes redondeados */
   justify-items: center;
+  align-items: start;
   padding: 15px; /* espacio interno */
   box-shadow: 0 0 8px rgba(0,0,0,0.1); /* sombra suave */
-  .grupo-anio {
   min-width: 280px; 
   max-width: 320px; 
-}
+  
 
 }
 
@@ -98,6 +98,7 @@ h1 {
   margin-bottom: 0;
   text-align: center;
   user-select: none; /* evita seleccionar texto accidentalmente */
+  margin-bottom: 20px;
 }
 
 /* Estilos para cada semestre dentro del año */
