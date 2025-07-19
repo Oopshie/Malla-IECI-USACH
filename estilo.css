@@ -80,6 +80,7 @@ h1 {
   gap: 20px; /* espacio vertical entre semestres */
   background-color: #ccccff;  /* color suave de fondo */
   border-radius: 10px; /* bordes redondeados */
+  justify-items: center;
   padding: 15px; /* espacio interno */
   box-shadow: 0 0 8px rgba(0,0,0,0.1); /* sombra suave */
 }
@@ -100,10 +101,19 @@ h1 {
   border-left: 8px solid #f3e5f5; /* barra izquierda decorativa */
   padding: 10px 15px;
   border-radius: 8px;
-  flex: 1;
   margin-bottom: 20px;
-  min-width: 240px;
+  min-width: 260px;
+  max-width: 280px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
   box-shadow: 0 0 6px rgba(0,0,0,0.1); /* sombra ligera */
+
+  /*display botones*/
+  display: flex; /*usamos flexbox*/
+  flex-direction: column; /*organiza verticalmente*/
+  align-items: center; /*organiza horizontalmente*/
+  text-align: center; /*centra el texto*/
 }
 
 /* Encabezado h2 del semestre sin margen arriba */
