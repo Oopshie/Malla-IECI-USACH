@@ -76,12 +76,11 @@ h1 {
 /* Cada grupo de año se muestra como un grid con 2 filas para semestres */
 .grupo-anio {
   display: grid;
-  grid-template-rows: auto auto; /* dos filas: semestre 1 y semestre 2 */
+  grid-template-rows: auto auto auto; /* dos filas: semestre 1 y semestre 2 */
   gap: 20px; /* espacio vertical entre semestres */
   background-color: #ccccff;  /* color suave de fondo */
   border-radius: 10px; /* bordes redondeados */
   justify-items: center;
-  align-items: start;
   padding: 15px; /* espacio interno */
   box-shadow: 0 0 8px rgba(0,0,0,0.1); /* sombra suave */
   min-width: 280px; 
