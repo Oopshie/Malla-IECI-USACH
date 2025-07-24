@@ -1,4 +1,4 @@
- cgvb/* Reset básico para que el box-sizing incluya padding y border */
+/* Reset básico para que el box-sizing incluya padding y border */
 * {
   box-sizing: border-box;
 }
