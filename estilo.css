@@ -162,7 +162,7 @@ button.ramo {
 
 /* Hover para botones que no están aprobados ni deshabilitados */
 button.ramo:hover:not(:disabled):not(.aprobado) {
-  background-color: #faf8ff;
+  background-color: #ffffff;
   border-color: #b39ddb;
   color: #5e35b1;
 }
