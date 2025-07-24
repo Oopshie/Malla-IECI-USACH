@@ -194,19 +194,20 @@ button.ramo:disabled {
   }
   .anio {
     margin-bottom: 12px; /* separar del semestre */
+    text-align: center;
   }
   .semestre {
     border-left: none; /* quitar barra izquierda */
     background-color: #ede7f6; /* fondo azul claro */
+    margin: 0 auto 20px auto;
     margin-bottom: 20px; /* espacio abajo entre semestres */
     box-shadow: none; /* quitar sombra */
     padding: 10px;
     border-radius: 10px;
-    min-width: auto;
 
-    width: 90%;
-    max-width: 300px;
-    margin-left: auto;
-    margin-rigth: auto;
+    width: 90vw;
+    max-width: 320px;
+    min-width: 320px;
+    box-sizing: border-box;
   }
 }
