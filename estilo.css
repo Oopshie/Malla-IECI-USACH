@@ -1,4 +1,4 @@
-/* Reset básico para que el box-sizing incluya padding y border */
+ cgvb/* Reset básico para que el box-sizing incluya padding y border */
 * {
   box-sizing: border-box;
 }
@@ -162,7 +162,9 @@ button.ramo {
 
 /* Hover para botones que no están aprobados ni deshabilitados */
 button.ramo:hover:not(:disabled):not(.aprobado) {
-  background-color: #dcd3f5;
+  background-color: #faf8ff;
+  border-color: #b39ddb;
+  color: #5e35b1;
 }
 
 /* Estado aprobado: fondo verde y texto tachado */
@@ -177,8 +179,9 @@ button.ramo.aprobado {
 button.ramo:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  background-color: #f0f0f0;
-  border-color: #ddd;
+  background-color: #f0edf8;
+  border-color: #d1c4e9;
+  color: #b0a8c7;
 }
 
 /* Ajustes para móvil: mostrar años y semestres en columna sencilla */
