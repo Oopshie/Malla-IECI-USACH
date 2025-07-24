@@ -197,11 +197,16 @@ button.ramo:disabled {
   }
   .semestre {
     border-left: none; /* quitar barra izquierda */
-    background-color: #ccccff; /* fondo azul claro */
+    background-color: #ede7f6; /* fondo azul claro */
     margin-bottom: 20px; /* espacio abajo entre semestres */
     box-shadow: none; /* quitar sombra */
     padding: 10px;
     border-radius: 10px;
     min-width: auto;
+
+    width: 90%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-rigth: auto;
   }
 }
